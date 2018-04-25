@@ -2,8 +2,11 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Confirm from './Confirm.jsx';
 import Login from './Login.jsx';
-// import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
+import Slackpage from './Slackpage.jsx';
+
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import {LoginUser} from '../actions/actions-login.js';
 
 class Workspace extends Component {
     constructor() {
@@ -80,6 +83,7 @@ class Workspace extends Component {
                     alert('NOT A VALID USER')
                 }
                 else {
+                    // document.getElementsByName('username')[0].value = '';
                     this.setState({
                         status : 3
                     })
@@ -92,34 +96,41 @@ class Workspace extends Component {
     }
 
     validatePassword() {
-        // const firstPayload = {
-        //     username : this.state.username,
-        //     password : this.state.password
-        // }
-        // axios.post('/api/user/login', firstPayload)
-        //     .then(response => {
-        //         console.log('this is the response to validate the passwordddd', response)
-        //     })
-        //     .catch(err => {
-        //         console.log('this is the error for validating passsworddd', err)
-        //     })
-        //SEE WHAT I CAN DO WITH THE SAME ROUTE.
-        const payload = {
-            team : this.state.team
+        const firstPayload = {
+            username : this.state.username,
+            password : this.state.password
         }
-        axios.post('/api/createteam', payload)
+        console.log('this the first payloadddddddd', firstPayload)
+        axios.post('/api/user/login', firstPayload)
             .then(response => {
-                console.log('this is the workspace response: ', response)
-                // {this.setState({
-                //     status : 4
-                // })}
-                //when this gets click bind the actions to the workspace(team) action to the response and throw it to the store
-                //when logged in load the reducers of the usertablerelationship
-                //***DO THIS BY TODAYYYYY */
+                console.log('this is the response to validate the passwordddd', response.data)
+                this.props.LoginUser(response.data)
+                const payload = {
+                    team : this.state.team
+                }
+                axios.post('/api/createteam', payload)
+                    .then(response => {
+                        console.log('this is the workspace response: ', response)
+                        // {this.setState({
+                        //     status : 4
+                        // })}
+                        //when this gets click bind the actions to the workspace(team) action to the response and throw it to the store
+                        //when logged in load the reducers of the usertablerelationship
+                        //***DO THIS BY TODAYYYYY */
+                        // this.setState({
+                        //     status: 5
+                        // })
+                    })
+                    .catch(err => {
+                        console.log('this is the err: ', err)
+                    })
             })
             .catch(err => {
-                console.log('this is the err: ', err)
+                console.log('this is the error for validating passsworddd', err)
             })
+        
+        ////SEND ME TO MY SLACKPAGE WITH ALL DATA FROM THE JOIN TABLE
+        
 
     }
 
@@ -163,7 +174,7 @@ class Workspace extends Component {
                 <div>
 
                 <div>
-                    <input name='password' type='password' placeholder='enter password'></input>
+                    <input name='password' type='password' placeholder='enter password' onChange={this.onTextHandler.bind(this)}></input>
                     <button onClick={this.validatePassword.bind(this)}>VALIDATE PASSWORD</button>
                 </div>
 
@@ -187,4 +198,16 @@ class Workspace extends Component {
     }
 }
 
-export default Workspace;
+const mapStateToProps = (state) => {
+    return {
+        LoginUser: state.LoginReducer
+    };
+};
+
+const matchDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        LoginUser
+    }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(Workspace);

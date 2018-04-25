@@ -9,7 +9,7 @@ class Slackpage extends Component {
     }
 
     render() {
-        // console.log('this is the props from slackk', this.props.LoginUser)
+        console.log('this is the props from slackk', this.props.LoginUser)
         return(
             <div>
                 <h2>{this.props.LoginUser.username}</h2>

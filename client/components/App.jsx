@@ -15,7 +15,7 @@ class App extends Component {
         console.log('this.props.user thisehtoishet',this.props.LoginUser)
         return(
             <div>
-                {/* <Workspace/> */} <Login/>
+                {/* <Workspace/> <Login/> */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>
 
