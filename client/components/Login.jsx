@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
+import {LoginUser} from '../actions/actions-login.js';
 
 class Login extends Component {
     constructor() {
@@ -28,8 +29,9 @@ class Login extends Component {
         }
         axios.post('api/user/login', payload)
             .then(response => {
-                console.log('this is the response for login handlerrr', response)
+                console.log('this is the response for sign in handlerrr', response)
                 ///if response is null, do something
+                this.props.LoginUser(response.data)
             })
             .catch(err => {
                 console.log('this is the err for login handlerrrr', err)
@@ -67,11 +69,22 @@ class Login extends Component {
                     <button onClick={this.onLoginHandler.bind(this)}>Sign In</button>
                     <button onClick={this.onSignupHandler.bind(this)}>Sign Up</button>
                 </div>
-                
 
             </div>
         )
     }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+    return {
+        LoginUser: state.LoginReducer
+    };
+};
+
+const matchDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        LoginUser
+    }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(Login);

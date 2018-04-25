@@ -64,6 +64,18 @@ class Workspace extends Component {
     }
 
     validatePassword() {
+        // const firstPayload = {
+        //     username : this.state.username,
+        //     password : this.state.password
+        // }
+        // axios.post('/api/user/login', firstPayload)
+        //     .then(response => {
+        //         console.log('this is the response to validate the passwordddd', response)
+        //     })
+        //     .catch(err => {
+        //         console.log('this is the error for validating passsworddd', err)
+        //     })
+        //SEE WHAT I CAN DO WITH THE SAME ROUTE.
         const payload = {
             team : this.state.team
         }

@@ -1,7 +1,8 @@
 import express from 'express';
 import {Router} from 'express';
+
 import SignupController from '../controllers/SignupController.js';
-// import SigninController from '../controllers/SigninController.js';
+import SigninController from '../controllers/SigninController.js';
 
 import CreateteamController from '../controllers/CreateTeamController.js';
 import ConfirmuserController from '../controllers/ConfirmuserController.js';
@@ -13,8 +14,8 @@ const router = Router();
 router.route('/user/signin')
     .post(SignupController)
 //sign in
-// router.route('/user/login')
-//     .post(SigninController)
+router.route('/user/login')
+    .post(SigninController)
 
 
 
