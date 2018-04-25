@@ -4,7 +4,7 @@ import parser from 'body-parser';
 import db from './db';
 import router from './routes';
 import bcrypt from 'bcryptjs';
-// import passport from 'passport';
+import passport from 'passport';
 
 const app = express();
 

@@ -24,6 +24,17 @@ CREATE TABLE channels (
     PRIMARY KEY(id)
 );
 
+CREATE TABLE UserTableRelationship (
+    id int NOT NULL auto_increment,
+    userId int NOT NULL,
+    FOREIGN KEY(userId) REFERENCES users(id),
+    teamsId int NOT NULL,
+    FOREIGN KEY(teamsId) REFERENCES teams(id),
+    channelsId int NOT NULL,
+    FOREIGN KEY(channelsId) REFERENCES channels(id),
+    PRIMARY KEY(id)
+);
+
 CREATE TABLE messages (
     id int NOT NULL auto_increment,
     messages varchar(255),
