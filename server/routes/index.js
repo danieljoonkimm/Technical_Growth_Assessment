@@ -2,7 +2,10 @@ import express from 'express';
 import {Router} from 'express';
 import SignupController from '../controllers/SignupController.js';
 // import SigninController from '../controllers/SigninController.js';
+
 import CreateteamController from '../controllers/CreateTeamController.js';
+import ConfirmuserController from '../controllers/ConfirmuserController.js';
+
 
 const router = Router();
 
@@ -13,6 +16,12 @@ router.route('/user/signin')
 // router.route('/user/login')
 //     .post(SigninController)
 
+
+
+
+//confirm user to create team
+router.route('/user/confirmuser')
+    .post(ConfirmuserController)
 
 //create team
 router.route('/createteam')
