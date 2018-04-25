@@ -25,6 +25,10 @@ class Workspace extends Component {
 
     continueHandler() {
         console.log('this is the continue handler')
+
+        //need to make request to server to check to see if the workspace exists.. 
+        //if it does, then make sure to send them to the login page.
+        //else let them know that the workspace doesnt exist.
     }
 
     createWorkspaceHandler() {
