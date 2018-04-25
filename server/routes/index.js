@@ -7,15 +7,16 @@ import SigninController from '../controllers/SigninController.js';
 import CreateteamController from '../controllers/CreateTeamController.js';
 import ConfirmuserController from '../controllers/ConfirmuserController.js';
 
+import passport from '../passport.js';
 
 const router = Router();
 
 //sign up
-router.route('/user/signin')
+router.route('/user/signup')
     .post(SignupController)
 //sign in
 router.route('/user/login')
-    .post(SigninController)
+    .post(passport.authenticate('local', {session : false}),SigninController)
 
 
 

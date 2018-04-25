@@ -47,7 +47,7 @@ It is up to you to ask GOOD, clarifying questions.
 5. Authentication system
 	- Using Passport.js, bcrypt
 	- Utilize the local strategy
-		- Look into the `next()` function in Nodejs!
+		- LOOK into the `next()` function in Nodejs!
 6. Create a socket server
 	- Socket.IO
 	- Mimic the functionality of Slack

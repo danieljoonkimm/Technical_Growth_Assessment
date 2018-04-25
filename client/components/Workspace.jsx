@@ -90,7 +90,7 @@ class Workspace extends Component {
                 //     status : 4
                 // })}
                 //when this gets click bind the actions to the workspace(team) action to the response and throw it to the store
-                //when logged in load the reducers of the usertablerelationship, as well as the users foreign ids
+                //when logged in load the reducers of the usertablerelationship
                 //***DO THIS BY TODAYYYYY */
             })
             .catch(err => {

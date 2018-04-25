@@ -5,11 +5,13 @@ import db from './db';
 import router from './routes';
 import bcrypt from 'bcryptjs';
 import passport from 'passport';
+import {Stragety as LocalStrategy} from 'passport-local';
 
 const app = express();
 
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
+app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use('/api', router);

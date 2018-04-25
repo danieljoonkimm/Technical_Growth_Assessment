@@ -45,12 +45,14 @@ class Login extends Component {
             username : this.state.username,
             password : this.state.password
         }
-        axios.post('/api/user/signin', payload)
+        axios.post('/api/user/signup', payload)
             .then(response => {
-                console.log('this is the login signup response', response)
-                this.setState({
-                    signupComplete : !this.state.signupComplete
-                })
+                if(response.data.results === null) {
+                    alert('USER NAME IS ALREADY TAKEN')
+                }
+                else {
+                    console.log('this is the login sign up response', response);
+                }
             })
             .catch(err => {
                 console.log('this is the login signup err', err)
