@@ -27,9 +27,13 @@ class Workspace extends Component {
     }
 
     createWorkspaceHandler() {
-        this.setState({
-            status : 2
-        })
+        if(!this.state.team) {
+            alert('ENTER VALID WORKSPACE NAME')
+        } else {
+            this.setState({
+                status : 2
+            })
+        }
         // console.log('this the payload from workspace', payload)
         
     }
@@ -65,15 +69,15 @@ class Workspace extends Component {
         axios.post('/api/createteam', payload)
             .then(response => {
                 console.log('this is the workspace response: ', response)
+                // {this.setState({
+                //     status : 4
+                // })}
             })
             .catch(err => {
                 console.log('this is the err: ', err)
             })
-        
-    }
 
-    //when you click, you want to render a different input box that
-     //first to user tables, then fire the creatworkspace handler.
+    }
 
     render() {
         return(
