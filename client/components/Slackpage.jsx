@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {LoginUser} from '../actions/actions-login.js';
 
 class Slackpage extends Component {
     constructor() {
@@ -6,11 +9,13 @@ class Slackpage extends Component {
     }
 
     render() {
+        // console.log('this is the props from slackk', this.props.LoginUser)
         return(
             <div>
-                this the slack page
+                <h2>{this.props.LoginUser.username}</h2>
 
                 <div>
+                    
                     <button>LOGOUT</button>
                 </div>
             </div>
@@ -18,4 +23,10 @@ class Slackpage extends Component {
     }
 }
 
-export default Slackpage;
+const mapStateToProps = function(state){
+    return {
+        LoginUser: state.LoginReducer,
+    }
+}
+
+export default connect(mapStateToProps, null)(Slackpage);
