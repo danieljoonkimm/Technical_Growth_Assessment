@@ -4,8 +4,10 @@ import {Router} from 'express';
 import SignupController from '../controllers/SignupController.js';
 import SigninController from '../controllers/SigninController.js';
 
-import CreateteamController from '../controllers/CreateTeamController.js';
+import CreateteamController from '../controllers/CreateteamController.js';
 import ConfirmuserController from '../controllers/ConfirmuserController.js';
+
+import CheckteamController from '../controllers/CheckteamController';
 
 import passport from '../passport.js';
 
@@ -28,5 +30,10 @@ router.route('/user/confirmuser')
 //create team
 router.route('/createteam')
     .post(CreateteamController)
+
+
+//check team exists
+router.route('/checkteamexists')
+    .post(CheckteamController)
 
 export default router;

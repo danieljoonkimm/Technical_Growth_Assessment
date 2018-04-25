@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Confirm from './Confirm.jsx';
+import Login from './Login.jsx';
 // import { bindActionCreators } from 'redux';
 // import { connect } from 'react-redux';
 
@@ -12,7 +13,8 @@ class Workspace extends Component {
             team : '',
             status : 1,
             username : '',
-            password : ''
+            password : '',
+            goodTeam : false
         }
     }
 
@@ -25,6 +27,28 @@ class Workspace extends Component {
 
     continueHandler() {
         console.log('this is the continue handler')
+
+        const payload = {
+            team : this.state.team
+        }
+        // console.log('this the payload for continue handlerrrrr', payload)
+        axios.post('/api/checkteamexists', payload)
+            .then(response => {
+                console.log('this that response for contining so that you can login', response.data.results)
+                if(!response.data.results.length) {
+                    alert('THERE IS NO TEAM NAME THAT EXISTS THAT YOU ENTERED')
+                }
+                else {
+                    console.log('good job')
+                    this.setState({
+                        goodTeam : !this.state.goodTeam,
+                        status : 4
+                    })
+                }
+            })
+            .catch(err => {
+                console.log('this be that error for continue handler to go to login after entering workspace', err)
+            })
 
         //NEED TO MAKE REQUEST TO SERVER TO CHECK TO SEE IF THE WORKSPACE EXISTS
         //IF IT DOES, THEN MAKE SURE TO SEND THEM TO THE LOGIN PAGE.
@@ -134,7 +158,7 @@ class Workspace extends Component {
 
                 :
 
-                this.state.status === 3 &&
+                this.state.status === 3 ?
                 
                 <div>
 
@@ -144,6 +168,17 @@ class Workspace extends Component {
                 </div>
 
                 </div>
+
+                :
+
+                this.state.status === 4 &&
+
+                <div>
+
+                    <Login/>
+
+                </div>
+
                 
                 }
                 
