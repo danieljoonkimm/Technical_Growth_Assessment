@@ -5,7 +5,7 @@ const SignupModel = function (reqbody, callback) {
     console.log('this is the signupppppp', reqbody)
     connection.query(`SELECT * FROM users WHERE username = "${reqbody.username}"`, function (err, result, fields) {
       if (err) { throw err; } 
-      
+      console.log('this beeee the resultstestsets', result)
       if (!result.length) {
         console.log('this is the data from a query for user', result);
         bcrypt.genSalt(10, function(err, salt) {

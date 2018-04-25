@@ -11,7 +11,8 @@ class Workspace extends Component {
         this.state = {
             team : '',
             status : 1,
-            username : ''
+            username : '',
+            password : ''
         }
     }
 
@@ -55,7 +56,7 @@ class Workspace extends Component {
                         status : 3
                     })
                 }
-                
+                document.getElementsByName('password')[0].value = '';
             })
             .catch(err => {
                 console.log('this is the err for the confirm user handler', err)
@@ -119,7 +120,7 @@ class Workspace extends Component {
                 <div>
 
                 <div>
-                    <input type='password' placeholder='enter password'></input>
+                    <input name='password' type='password' placeholder='enter password'></input>
                     <button onClick={this.validatePassword.bind(this)}>VALIDATE PASSWORD</button>
                 </div>
 
