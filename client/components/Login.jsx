@@ -79,7 +79,7 @@ class Login extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        LoginUser: state.LoginReducer
+        LogUser: state.LoginReducer
     };
 };
 

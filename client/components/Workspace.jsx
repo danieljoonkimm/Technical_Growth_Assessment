@@ -197,7 +197,7 @@ class Workspace extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        LoginUser: state.LoginReducer,
+        LogUser: state.LoginReducer,
         CreateTeam : state.CreateTeamReducer,
         ConfirmTeam : state.CheckTeamReducer
     };

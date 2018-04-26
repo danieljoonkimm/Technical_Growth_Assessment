@@ -5,7 +5,7 @@ const CheckteamController = (req,res) => {
     CheckteamModel(req.body.team, (err, result) => {
         console.log('this be that result for check team controlller: ', result)
         if(err) {
-            console.log('this be that error for checking team')
+            console.log('this be that error for checking team', err)
         }
         res.send(result)
     })

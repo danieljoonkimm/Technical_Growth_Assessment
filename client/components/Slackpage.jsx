@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {LoginUser} from '../actions/actions-login.js';
+import { TeamName } from '../actions/actions-createteam.js';
+import { CheckTeam} from '../actions/actions-teaminfo.js';
 
+import axios from 'axios';
 import Channel from '../components/channels/index.jsx'
 
 class Slackpage extends Component {
@@ -11,7 +14,28 @@ class Slackpage extends Component {
     }
 
     componentWillMount() {
-        
+        console.log('this is props for team name', this.props.LogUser)
+        console.log('this is props for team name', this.props.ConfirmTeam)
+        const payload = {
+            teamId : this.props.LogUser.id,
+            userId : this.props.ConfirmTeam.id
+        }
+        // axios.post('/api/getallchannelsforteam', payload)
+        // console.log('this be that payloaddddd you feel', payload)
+        //     .then(response => {
+        //         console.log('this is the response for grabbing channel CWL', response)
+        //     })
+        //     .catch(err => {
+        //         console.log('this is the error for the CWM', err)
+        //     })
+        axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
+        console.log('this be that payloaddddd you feel', payload)
+            .then(response => {
+                console.log('this is the response for grabbing channel CWL', response)
+            })
+            .catch(err => {
+                console.log('this is the error for the CWM', err)
+            })
     }
 
     render() {
@@ -30,11 +54,20 @@ class Slackpage extends Component {
     }
 }
 
-const mapStateToProps = function(state){
+const mapStateToProps = (state) => {
     return {
-        LoginUser: state.LoginReducer,
-        CreateTeam : state.CreateTeamReducer
-    }
-}
+        LogUser: state.LoginReducer,
+        CreateTeam : state.CreateTeamReducer,
+        ConfirmTeam : state.CheckTeamReducer
+    };
+};
 
-export default connect(mapStateToProps, null)(Slackpage);
+const matchDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        LoginUser,
+        TeamName,
+        CheckTeam
+    }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(Slackpage);

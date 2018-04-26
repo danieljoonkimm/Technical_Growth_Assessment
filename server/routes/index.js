@@ -10,6 +10,7 @@ import ConfirmuserController from '../controllers/ConfirmuserController.js';
 import CheckteamController from '../controllers/CheckteamController';
 
 import MakechannelController from '../controllers/MakechannelController.js';
+import GetallchannelsController from '../controllers/GetallchannelsController.js';
 
 import passport from '../passport.js';
 
@@ -21,7 +22,6 @@ router.route('/user/signup')
 //sign in
 router.route('/user/login')
     .post(passport.authenticate('local', {session : false}),SigninController)
-
 
 
 
@@ -39,9 +39,13 @@ router.route('/checkteamexists')
     .post(CheckteamController)
 
 
-//make channel
+//make channel STILL NEED TO WORK ON THIS........MAKE SURE YOU DO THIS TO MAKE CHANNEL...
 router.route('/makechannel')
     .post(MakechannelController)
+
+//get all channels for team
+router.route('/getallchannelsforteam/:userid/:teamid')
+    .get(GetallchannelsController)
 
 
 export default router;
