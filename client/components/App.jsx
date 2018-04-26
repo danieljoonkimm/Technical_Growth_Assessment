@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Login from './Login.jsx';
 import Workspace from './Workspace.jsx';
 import Slackpage from './Slackpage.jsx';
+import Search from './Search.jsx';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
@@ -15,7 +16,7 @@ class App extends Component {
         console.log('this that create team name',this.props.CreateTeam)
         return(
             <div>
-                {/* <Login/> */}
+                {/* <Login/> <Search/> */}
                 {/* {this.props.CreateTeam} */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>

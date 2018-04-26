@@ -7,6 +7,7 @@ import { CheckTeam} from '../actions/actions-teaminfo.js';
 import { CreateChannel } from '../actions/actions-createchannel.js';
 
 import Workspace from '../components/Workspace.jsx';
+import Search from '../components/Search.jsx';
 
 import axios from 'axios';
 import Channel from '../components/channels/index.jsx'

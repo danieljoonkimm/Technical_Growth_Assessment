@@ -12,6 +12,8 @@ import CheckteamController from '../controllers/CheckteamController';
 import MakechannelController from '../controllers/MakechannelController.js';
 import GetallchannelsController from '../controllers/GetallchannelsController.js';
 
+import InviteuserController from '../controllers/InviteuserController.js';
+
 import passport from '../passport.js';
 
 const router = Router();
@@ -46,6 +48,10 @@ router.route('/makechannel')
 //get all channels for team
 router.route('/getallchannelsforteam/:userid/:teamid')
     .get(GetallchannelsController)
+
+//search user to invite to channel
+router.route('/searchusertoinvite/:userId')
+    .get(InviteuserController)
 
 
 export default router;
