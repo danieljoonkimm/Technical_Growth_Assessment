@@ -5,24 +5,25 @@ import {LoginUser} from '../actions/actions-login.js';
 import { TeamName } from '../actions/actions-createteam.js';
 import { CheckTeam} from '../actions/actions-teaminfo.js';
 
+import Workspace from '../components/Workspace.jsx';
+
 import axios from 'axios';
 import Channel from '../components/channels/index.jsx'
 
 class Slackpage extends Component {
     constructor() {
         super();
+
+        this.state = {
+            loggedIn : false
+        }
     }
 
     componentWillMount() {
         console.log('this is props for team name', this.props.LogUser)
         console.log('this is props for team name', this.props.ConfirmTeam)
-        // const payload = {
-        //     teamId : this.props.LogUser.id,
-        //     userId : this.props.ConfirmTeam.id
-        // }
-     
+
         axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
-        console.log('this be that payloaddddd you feel', payload)
             .then(response => {
                 console.log('this is the response for grabbing channel CWL', response)
             })
@@ -31,17 +32,28 @@ class Slackpage extends Component {
             })
     }
 
+    logoutHandler() {
+        console.log('this be that logout handler')
+        this.setState({
+            loggedIn : !this.state.loggedIn
+        })
+
+    }
+
     render() {
         console.log('this is the props from slackk', this.props.LoginUser)
         //////take care of the this.props.CreateTeam cus its null in the beginning, after just load it when its rdy.
         return(
             <div>
-                <h2>{this.props.LoginUser.username}</h2>
-
+                {/* <h2>{this.props.LoginUser.username}</h2> */}
+                {!this.state.loggedIn ? 
                 <div>
                     <Channel/>
-                    <button>LOGOUT</button>
+                    <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
                 </div>
+
+                : <Workspace/>
+                }
             </div>
         )
     }

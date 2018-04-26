@@ -34,8 +34,8 @@ It is up to you to ask GOOD, clarifying questions.
       - Channels
       - Messages
       - Attachments
-      - Stars
-      - Reactions
+      - Stars (save for later)
+      - Reactions (save for later)
       - Comments
 2. System Design
 3. Create a RESTful API
@@ -90,7 +90,7 @@ It is up to you to ask GOOD, clarifying questions.
 3. Achieve Slack-like functionality
 	- It doesn't have to be the most scalable and perfect implementation
 	- I should be able to do the following:
-		- Create a Slack Team
+		- Create a Slack Team -DONE
 		- Invite users to my Slack Team
 		- Create channels within my Slack Team
 		- Send messages to specific channels
