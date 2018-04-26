@@ -16,18 +16,11 @@ class Slackpage extends Component {
     componentWillMount() {
         console.log('this is props for team name', this.props.LogUser)
         console.log('this is props for team name', this.props.ConfirmTeam)
-        const payload = {
-            teamId : this.props.LogUser.id,
-            userId : this.props.ConfirmTeam.id
-        }
-        // axios.post('/api/getallchannelsforteam', payload)
-        // console.log('this be that payloaddddd you feel', payload)
-        //     .then(response => {
-        //         console.log('this is the response for grabbing channel CWL', response)
-        //     })
-        //     .catch(err => {
-        //         console.log('this is the error for the CWM', err)
-        //     })
+        // const payload = {
+        //     teamId : this.props.LogUser.id,
+        //     userId : this.props.ConfirmTeam.id
+        // }
+     
         axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
         console.log('this be that payloaddddd you feel', payload)
             .then(response => {
