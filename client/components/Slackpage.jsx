@@ -27,7 +27,7 @@ class Slackpage extends Component {
         axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
             .then(response => {
                 console.log('this is the response for grabbing channel CWL', response)
-                // this.state.allchannels.push(response.data.results)
+                //push the response data results to the all channels array
             })
             .catch(err => {
                 console.log('this is the error for the CWM', err)
