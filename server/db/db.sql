@@ -16,13 +16,9 @@ CREATE TABLE teams (
     PRIMARY KEY(id)
 );
 
---type 0 = channels, type 1 = direct messages
 CREATE TABLE channels (
     id int NOT NULL auto_increment,
-    channel_name varchar(50),
-    teamsId int NOT NULL,
-    type int,
-    FOREIGN KEY(teamsId) REFERENCES teams(id),
+    channel_name varchar(255),
     PRIMARY KEY(id)
 );
 

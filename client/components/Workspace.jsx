@@ -60,12 +60,28 @@ class Workspace extends Component {
     }
 
     createWorkspaceHandler() {
+        console.log('this state fo team', this.state.team)
         if(!this.state.team) {
             alert('ENTER VALID WORKSPACE NAME')
         } else {
-            this.setState({
-                status : 2
-            })
+            const payload = {
+                team : this.state.team
+            }
+            axios.post('/api/checkteamexists', payload)
+                .then(response => {
+                    console.log('this is the response for checking workspace handle', response)
+                    if(response.data.results.length) {
+                        alert('TEAM ALREADY EXISTS')
+                    }
+                    else {
+                        this.setState({
+                            status : 2
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log('this is the error for grabbing workspace handler', err)
+                })
         }
 
         //FIND A WAY TO BIND THE ACTION CREATE TEAM SO I CAN SEE THE DATA ON THE SLACK PAGE THROUGH REDUCER
@@ -79,9 +95,10 @@ class Workspace extends Component {
         const payload = {
             username : this.state.username
         }
+        console.log('this is payload for confirm user', payload)
         axios.post('/api/user/confirmuser', payload)
-        // console.log('this is payload for confirm user', payload)
             .then(response => {
+                console.log('this is the other response from user handler', response)
                 console.log('this is the response from the confirm user handler', response.data.confirmed)
                 if(response.data.confirmed === false) {
                     alert('NOT A VALID USER')
@@ -109,6 +126,7 @@ class Workspace extends Component {
             .then(response => {
                 console.log('this is the response to validate the passwordddd', response.data)
                 this.props.LoginUser(response.data)
+                //this sends me back to my slack page since log user is no longer false
                 const payload = {
                     team : this.state.team
                 }
@@ -188,8 +206,8 @@ class Workspace extends Component {
                 <div>
                     <Login/>
                 </div>
-                
                 }
+            
                 
             </div>
         )

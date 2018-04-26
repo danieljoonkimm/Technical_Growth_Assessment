@@ -92,7 +92,7 @@ It is up to you to ask GOOD, clarifying questions.
 	- I should be able to do the following:
 		- Create a Slack Team -DONE
 		- Invite users to my Slack Team
-		- Create channels within my Slack Team
+		- Create channels within my Slack Team -not yet...almost
 		- Send messages to specific channels
 		- Direct Message users
 		- Toggle between the channels and DMs

@@ -32,22 +32,37 @@ class Channel extends Component {
     }
 
     makeChannelHandler() {
-        console.log('this is the make channel handler')
-        console.log('THISSSSSSS', this.props.ConfirmTeam)
-        const payload = {
-            channelname : this.state.channelname,
-            teamname : this.props.ConfirmTeam.team_name
+        // console.log('this is the make channel handler', this.props)
+        // console.log('thiss', this.props.CreateTeam)
+        // console.log('THISSSSSSS', this.props.ConfirmTeam)
+        if(this.props.CreateTeam === null) {
+            const payload = {
+                channelname : this.state.channelname,
+                teamname : this.props.ConfirmTeam.team_name
+            }
+            console.log('this that payload from channelll handler1415', payload)
+            axios.post('/api/makechannel', payload)
+                .then(response => {
+                    console.log('this is the responseee for making channel', response)
+                })
+                .catch(err => {
+                    console.log('this is the errror for makinggg channel', err)
+                })
         }
-        console.log('please fucking work', payload)
-
-        console.log('this that payload from channelll handler1415', payload)
-        axios.post('/api/makechannel', payload)
-            .then(response => {
-                console.log('this is the responseee for making channel', response)
-            })
-            .catch(err => {
-                console.log('this is the errror for makinggg channel', err)
-            })
+        else {
+            const payload1 = {
+                channelname : this.state.channelname,
+                teamname : this.props.CreateTeam
+            }
+            console.log('this that payload from channelll handler1415', payload1)
+            axios.post('/api/makechannel', payload1)
+                .then(response => {
+                    console.log('this is the responseee for making channel', response)
+                })
+                .catch(err => {
+                    console.log('this is the errror for makinggg channel', err)
+                })
+        }
     }
     
 
