@@ -96,6 +96,8 @@ It is up to you to ask GOOD, clarifying questions.
 		- Send messages to specific channels
 		- Direct Message users
 		- Toggle between the channels and DMs
+		- DANIELS JOB - when logging in need to render all data when logging in from teams 
+		to login in (render their channels/dM channels, messages)
 4. UI/UX should mirror Slack's Web App
 	- Again, I am not expecting perfection
 	- Use your best judgment on what looks sufficient
