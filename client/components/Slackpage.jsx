@@ -15,7 +15,8 @@ class Slackpage extends Component {
         super();
 
         this.state = {
-            loggedIn : false
+            loggedIn : false,
+            allchannels : []
         }
     }
 
@@ -26,6 +27,7 @@ class Slackpage extends Component {
         axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
             .then(response => {
                 console.log('this is the response for grabbing channel CWL', response)
+                // this.state.allchannels.push(response.data.results)
             })
             .catch(err => {
                 console.log('this is the error for the CWM', err)
@@ -45,10 +47,10 @@ class Slackpage extends Component {
         //////take care of the this.props.CreateTeam cus its null in the beginning, after just load it when its rdy.
         return(
             <div>
-                {/* <h2>{this.props.LoginUser.username}</h2> */}
+                <h2>{this.props.LoginUser.username}</h2>
                 {!this.state.loggedIn ? 
                 <div>
-                    <Channel/>
+                    <Channel allchannels={this.state.allchannels}/>
                     <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
                 </div>
 

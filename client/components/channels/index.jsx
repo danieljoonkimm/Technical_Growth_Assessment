@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class Channel extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             makeChannel : false,
@@ -57,6 +57,7 @@ class Channel extends Component {
 
                 <input onChange={this.onTextHandler.bind(this)} name='channelname' placeholder='enter channel name..'></input>
                 <button onClick={this.makeChannelHandler.bind(this)}>MAKE CHANNEL</button>
+                {/* <ChannelEntries allChannels={this.props.allChannels}/> */}
 
                 </div>
 

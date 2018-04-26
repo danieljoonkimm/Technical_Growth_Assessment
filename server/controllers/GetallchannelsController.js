@@ -7,7 +7,7 @@ const GetallchannelsController = (req, res) => {
         if(err) {
             console.log('this be that errrror in getting all channels controller', err)
         }
-        // res.send(result);
+        res.send(result);
     })
 };
 

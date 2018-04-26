@@ -8,14 +8,15 @@ import {connect} from 'react-redux';
 class App extends Component {
     constructor() {
         super();
-
     }
 
     render() {
         console.log('this.props.user is whattt',this.props.LoginUser)
+        console.log('this that create team name',this.props.CreateTeam)
         return(
             <div>
                 {/* <Login/> */}
+                {this.props.CreateTeam}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>
 
@@ -26,7 +27,7 @@ class App extends Component {
 const mapStateToProps = function(state){
     return {
         LoginUser: state.LoginReducer,
-        // CreateTeam : state.CreateTeamReducer
+        CreateTeam : state.CreateTeamReducer
     }
 }
 

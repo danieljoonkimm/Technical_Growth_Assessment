@@ -40,6 +40,7 @@ class Workspace extends Component {
         axios.post('/api/checkteamexists', payload)
             .then(response => {
                 console.log('this that response for contining so that you can login', response.data.results[0])
+                //^^^ {id and team name}
                 if(!response.data.results.length) {
                     alert('THERE IS NO TEAM NAME THAT EXISTS THAT YOU ENTERED')
                 }

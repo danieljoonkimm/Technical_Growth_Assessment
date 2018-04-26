@@ -3,13 +3,13 @@ import connection from '../db';
 const GetallchannelsModel = (channels, callback) => {
     console.log('this is all the channnnnels from the modelll', channels)
     //select everything from
-    // connection.query(`SELECT UserChannels.userId, UserChannels.channelsId FROM UserChannels WHERE userId = "${channels.userid}"
-    //                  INNER JOIN teams ON teams.teamId= "${channels.teamId}"`, (err, result) => {
-    //                      if(err) {
-    //                          console.log('this be that err from channels model: ', err)
-    //                      }
-    //                      callback(err, result)
-    //                  })
+    connection.query(`SELECT UsersChannels.userId, UsersChannels.channelsId FROM UsersChannels INNER JOIN Channels on UsersChannels.ChannelsId="${channels.id}" WHERE UsersChannels.userId="${channels.userid}"`, (err, results) => {
+        console.log('this that result frommm getting all channellsssss in model', results)
+        if(err) {
+            console.log('this thattttt errrrr from get all channels', err)
+        }
+        callback(err, {results : results})
+    })
 };
 
 export default GetallchannelsModel;
