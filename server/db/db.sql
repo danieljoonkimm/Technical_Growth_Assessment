@@ -18,7 +18,7 @@ CREATE TABLE teams (
 
 CREATE TABLE channels (
     id int NOT NULL auto_increment,
-    channel_name varchar(255),
+    channel_name varchar(50),
     PRIMARY KEY(id)
 );
 

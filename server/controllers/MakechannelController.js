@@ -7,7 +7,7 @@ const MakechannelController = (req, res) => {
         if(err) {
             console.log('this be the errror from make channnel')
         }
-        // res.send(result);
+        res.send(result);
     })
 };
 

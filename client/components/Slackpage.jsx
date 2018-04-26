@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {LoginUser} from '../actions/actions-login.js';
 import { TeamName } from '../actions/actions-createteam.js';
 import { CheckTeam} from '../actions/actions-teaminfo.js';
+import { CreateChannel } from '../actions/actions-createchannel.js';
 
 import Workspace from '../components/Workspace.jsx';
 
@@ -16,17 +17,20 @@ class Slackpage extends Component {
 
         this.state = {
             loggedIn : false,
+            confirmed : true,
             allchannels : []
         }
     }
 
     componentWillMount() {
         console.log('this is props for user name', this.props.LogUser)
-        console.log('this is props for team name', this.props.ConfirmTeam)
+        console.log('this is the props for create team', this.props.CreateTeam)
+        console.log('this is the create channel props', this.props.CreatetheChannel)
 
         //if logging in with existing team
         if(this.props.ConfirmTeam !== null) {
             axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
+            ///? LOOK AT ADDING THE CHANNELS ID
                 .then(response => {
                     console.log('this is the response for grabbing channel CWL', response)
                     //push the response data results to the all channels array
@@ -47,11 +51,18 @@ class Slackpage extends Component {
     }
 
     render() {
-        console.log('this is the props from slackk', this.props.LoginUser)
-        //////take care of the this.props.CreateTeam cus its null in the beginning, after just load it when its rdy.
+        //////THE H3 DOES NOT WORK PROPERLYYYYY!!!!!!!!!!!!!!
         return(
             <div>
-                <h2>{this.props.LoginUser.username}</h2>
+                
+                <div>
+                    <h3>
+                        {/* {!this.props.confirmed && this.props.CreateTeam || this.props.ConfirmTeam.team_name} */}
+                    </h3>
+                </div>
+
+                <h2>{this.props.LogUser.username}</h2>
+
                 {!this.state.loggedIn ? 
                 <div>
                     <Channel allchannels={this.state.allchannels}/>
@@ -69,7 +80,8 @@ const mapStateToProps = (state) => {
     return {
         LogUser: state.LoginReducer,
         CreateTeam : state.CreateTeamReducer,
-        ConfirmTeam : state.CheckTeamReducer
+        ConfirmTeam : state.CheckTeamReducer,
+        CreatetheChannel : state.CreateChannelReducer
     };
 };
 
@@ -77,7 +89,8 @@ const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
         LoginUser,
         TeamName,
-        CheckTeam
+        CheckTeam,
+        CreateChannel
     }, dispatch);
 };
 

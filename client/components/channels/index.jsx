@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { LoginUser } from '../../actions/actions-login.js';
 import { TeamName } from '../../actions/actions-createteam.js';
 import { CheckTeam} from '../../actions/actions-teaminfo.js';
+import { CreateChannel } from '../../actions/actions-createchannel.js';
 
 class Channel extends Component {
     constructor(props) {
@@ -43,7 +44,8 @@ class Channel extends Component {
             console.log('this that payload from channelll handler1415', payload)
             axios.post('/api/makechannel', payload)
                 .then(response => {
-                    console.log('this is the responseee for making channel', response)
+                    console.log('this is the responseee for making channel', response.data.result.insertId)
+                    this.props.CreateChannel(response.data.result.insertId)
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)
@@ -97,7 +99,8 @@ const mapStateToProps = (state) => {
     return {
         LogUser: state.LoginReducer,
         CreateTeam : state.CreateTeamReducer,
-        ConfirmTeam : state.CheckTeamReducer
+        ConfirmTeam : state.CheckTeamReducer,
+        CreatetheChannel : state.CreateChannelReducer
     };
 };
 
@@ -105,7 +108,8 @@ const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
         LoginUser,
         TeamName,
-        CheckTeam
+        CheckTeam,
+        CreateChannel
     }, dispatch);
 };
 
