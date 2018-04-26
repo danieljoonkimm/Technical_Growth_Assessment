@@ -6,7 +6,9 @@ import Slackpage from './Slackpage.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import {LoginUser} from '../actions/actions-login.js';
+import { LoginUser } from '../actions/actions-login.js';
+import { TeamName } from '../actions/actions-createteam.js';
+import { CheckTeam} from '../actions/actions-teaminfo.js';
 
 class Workspace extends Component {
     constructor() {
@@ -37,12 +39,14 @@ class Workspace extends Component {
         // console.log('this the payload for continue handlerrrrr', payload)
         axios.post('/api/checkteamexists', payload)
             .then(response => {
-                console.log('this that response for contining so that you can login', response.data.results)
+                console.log('this that response for contining so that you can login', response.data.results[0])
                 if(!response.data.results.length) {
                     alert('THERE IS NO TEAM NAME THAT EXISTS THAT YOU ENTERED')
                 }
                 else {
-                    console.log('good job')
+                    ///SEND THE RESPONSE DATA RESULTS TO STORE
+                    this.props.CheckTeam(response.data.results[0]);
+                    // console.log('this props.confirmteam', this.props.ConfirmTeam)
                     this.setState({
                         goodTeam : !this.state.goodTeam,
                         status : 4
@@ -52,10 +56,6 @@ class Workspace extends Component {
             .catch(err => {
                 console.log('this be that error for continue handler to go to login after entering workspace', err)
             })
-
-        //NEED TO MAKE REQUEST TO SERVER TO CHECK TO SEE IF THE WORKSPACE EXISTS
-        //IF IT DOES, THEN MAKE SURE TO SEND THEM TO THE LOGIN PAGE.
-        //ELSE LET THEM KNOW THAT THE WORKSPACE DOESNT EXIST.
     }
 
     createWorkspaceHandler() {
@@ -66,7 +66,10 @@ class Workspace extends Component {
                 status : 2
             })
         }
-        // console.log('this the payload from workspace', payload)
+
+        //FIND A WAY TO BIND THE ACTION CREATE TEAM SO I CAN SEE THE DATA ON THE SLACK PAGE THROUGH REDUCER
+        //FIND A WAY TO GET ALL DATA FROM USERRELATIONSHIPTABLE MAYBE?
+        //FIGURE IT OUTTTTTT!!!!!! TODAY!!!!!!!!!
         
     }
 
@@ -109,17 +112,14 @@ class Workspace extends Component {
                     team : this.state.team
                 }
                 axios.post('/api/createteam', payload)
-                    .then(response => {
-                        console.log('this is the workspace response: ', response)
-                        // {this.setState({
-                        //     status : 4
-                        // })}
+                    .then(response1 => {
+                        console.log('this is the workspace response: ', response1.data)
+                        this.props.TeamName(response1.data);
+                        console.log('what the heck is this',this.props.CreateTeam)
                         //when this gets click bind the actions to the workspace(team) action to the response and throw it to the store
                         //when logged in load the reducers of the usertablerelationship
                         //***DO THIS BY TODAYYYYY */
-                        // this.setState({
-                        //     status: 5
-                        // })
+
                     })
                     .catch(err => {
                         console.log('this is the err: ', err)
@@ -185,11 +185,8 @@ class Workspace extends Component {
                 this.state.status === 4 &&
 
                 <div>
-
                     <Login/>
-
                 </div>
-
                 
                 }
                 
@@ -200,13 +197,17 @@ class Workspace extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        LoginUser: state.LoginReducer
+        LoginUser: state.LoginReducer,
+        CreateTeam : state.CreateTeamReducer,
+        ConfirmTeam : state.CheckTeamReducer
     };
 };
 
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        LoginUser
+        LoginUser,
+        TeamName,
+        CheckTeam
     }, dispatch);
 };
 

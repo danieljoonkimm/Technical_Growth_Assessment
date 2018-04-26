@@ -12,10 +12,10 @@ class App extends Component {
     }
 
     render() {
-        console.log('this.props.user thisehtoishet',this.props.LoginUser)
+        console.log('this.props.user is whattt',this.props.LoginUser)
         return(
             <div>
-                {/* <Workspace/> <Login/> */}
+                {/* <Login/> */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>
 
@@ -26,6 +26,7 @@ class App extends Component {
 const mapStateToProps = function(state){
     return {
         LoginUser: state.LoginReducer,
+        // CreateTeam : state.CreateTeamReducer
     }
 }
 

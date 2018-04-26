@@ -36,8 +36,6 @@ class Login extends Component {
             .catch(err => {
                 console.log('this is the err for login handlerrrr', err)
             })
-            //TODO FOR ONLOGINHANDLER.
-            //MAKE SURE THAT YOU CHECK TO SEE IF PASSWORD MATCHES THROUGH PASSPORT AND BCRYPT COMPARE
     }
 
     onSignupHandler() {

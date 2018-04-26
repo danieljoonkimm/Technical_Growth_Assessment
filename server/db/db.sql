@@ -16,20 +16,29 @@ CREATE TABLE teams (
     PRIMARY KEY(id)
 );
 
+--type 0 = channels, type 1 = direct messages
 CREATE TABLE channels (
     id int NOT NULL auto_increment,
     channel_name varchar(50),
     teamsId int NOT NULL,
+    type int,
     FOREIGN KEY(teamsId) REFERENCES teams(id),
     PRIMARY KEY(id)
 );
 
-CREATE TABLE UserTableRelationship (
+CREATE TABLE UsersTeams (
     id int NOT NULL auto_increment,
     userId int NOT NULL,
     FOREIGN KEY(userId) REFERENCES users(id),
     teamsId int NOT NULL,
     FOREIGN KEY(teamsId) REFERENCES teams(id),
+    PRIMARY KEY(id)
+);
+
+CREATE TABLE UsersChannels (
+    id int NOT NULL auto_increment,
+    userId int NOT NULL,
+    FOREIGN KEY(userId) REFERENCES users(id),
     channelsId int NOT NULL,
     FOREIGN KEY(channelsId) REFERENCES channels(id),
     PRIMARY KEY(id)

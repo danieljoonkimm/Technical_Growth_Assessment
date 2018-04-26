@@ -1,7 +1,7 @@
-export const TeamName = (team) => {
+export const CheckTeam = (team) => {
     // console.log('this the teammm', team)
     return {
-        type: 'CREATE_TEAM_BUTTON_CLICKED',
+        type: 'CHECKTEAM_BUTTON_CLICKED',
         payload: team
     };
 };

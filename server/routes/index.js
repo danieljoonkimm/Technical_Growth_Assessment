@@ -9,6 +9,8 @@ import ConfirmuserController from '../controllers/ConfirmuserController.js';
 
 import CheckteamController from '../controllers/CheckteamController';
 
+import MakechannelController from '../controllers/MakechannelController.js';
+
 import passport from '../passport.js';
 
 const router = Router();
@@ -35,5 +37,11 @@ router.route('/createteam')
 //check team exists
 router.route('/checkteamexists')
     .post(CheckteamController)
+
+
+//make channel
+router.route('/makechannel')
+    .post(MakechannelController)
+
 
 export default router;
