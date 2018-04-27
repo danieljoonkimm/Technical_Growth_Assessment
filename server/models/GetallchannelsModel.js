@@ -1,9 +1,9 @@
 import connection from '../db';
 
-const GetallchannelsModel = (channels, callback) => {
-    console.log('this is all the channnnnels from the modelll', channels)
+const GetallchannelsModel = (payload, callback) => {
+    console.log('this is all the channnnnels from the modelll', payload)
     //select everything from
-    connection.query(`SELECT UsersChannels.userId, UsersChannels.channelsId FROM UsersChannels INNER JOIN channels on UsersChannels.channelsId="${channels.id}" WHERE UsersChannels.userId="${channels.userid}"`, (err, results) => {
+    connection.query(`SELECT UsersChannels.userId, UsersChannels.channelsId FROM UsersChannels INNER JOIN channels ON UsersChannels.channelsId=channels.id WHERE UsersChannels.userId="${payload.userid}"`, (err, results) => {
         console.log('this that result frommm getting all channellsssss in model', results)
         if(err) {
             console.log('this thattttt errrrr from get all channels', err)
@@ -14,6 +14,8 @@ const GetallchannelsModel = (channels, callback) => {
 
 export default GetallchannelsModel;
 
+// SELECT UsersChannels.userId, UsersChannels.channelsId WHERE 
+
 // CREATE TABLE UsersChannels (
 //     id int NOT NULL auto_increment,
 //     userId int NOT NULL,
@@ -23,7 +25,8 @@ export default GetallchannelsModel;
 //     PRIMARY KEY(id)
 // );
 
-// SELECT table1.column1, table2.column2...
-// FROM table1
-// INNER JOIN table2
-// ON table1.common_field = table2.common_field;
+
+//selecting the id and channels id from the userchannels id
+//next inner join with the channels table
+//next ON userchannels.channelsid = channels.id
+//where userchannels.userid = payload.userid

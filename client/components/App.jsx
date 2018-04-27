@@ -16,7 +16,8 @@ class App extends Component {
         console.log('this that create team name',this.props.CreateTeam)
         return(
             <div>
-                {/* <Login/> <Search/> */}
+                {/* <Login/>  */}
+                {/* <Search/> */}
                 {/* {this.props.CreateTeam} */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>

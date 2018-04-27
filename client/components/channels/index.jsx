@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import ChannelEntries from './ChannelEntries.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -45,7 +46,11 @@ class Channel extends Component {
             axios.post('/api/makechannel', payload)
                 .then(response => {
                     console.log('this is the responseee for making channel', response.data.result.insertId)
-                    this.props.CreateChannel(response.data.result.insertId)
+                    console.log('this is the responseee1sdfsdf', response)
+                    this.props.CreateChannel(response.data.channelname)
+                    this.setState({
+                        makeChannel : !this.state.makeChannel
+                    })
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)
@@ -60,6 +65,9 @@ class Channel extends Component {
             axios.post('/api/makechannel', payload1)
                 .then(response => {
                     console.log('this is the responseee for making channel', response)
+                    this.setState({
+                        makeChannel : !this.state.makeChannel
+                    })
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)
@@ -76,6 +84,10 @@ class Channel extends Component {
                 <div>
 
                 <button onClick={this.createChannelHandler.bind(this)}>CREATE CHANNEL</button>
+
+                <div>
+                <ChannelEntries/>
+                </div>
 
                 </div>
 

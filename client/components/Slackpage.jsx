@@ -19,7 +19,7 @@ class Slackpage extends Component {
         this.state = {
             loggedIn : false,
             confirmed : true,
-            allchannels : []
+            // allchannels : []
         }
     }
 
@@ -31,7 +31,6 @@ class Slackpage extends Component {
         //if logging in with existing team
         if(this.props.ConfirmTeam !== null) {
             axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
-            ///? LOOK AT ADDING THE CHANNELS ID
                 .then(response => {
                     console.log('this is the response for grabbing channel CWL', response)
                     //push the response data results to the all channels array
@@ -55,7 +54,7 @@ class Slackpage extends Component {
         //////THE H3 DOES NOT WORK PROPERLYYYYY!!!!!!!!!!!!!!
         return(
             <div>
-                
+                <button onClick={() => { console.log('test', this.props.CreatetheChannel )}}/>
                 <div>
                     <h3>
                         {/* {!this.props.confirmed && this.props.CreateTeam || this.props.ConfirmTeam.team_name} */}

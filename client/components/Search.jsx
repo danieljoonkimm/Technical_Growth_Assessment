@@ -21,6 +21,12 @@ class Search extends Component {
         axios.get(`/api/searchusertoinvite/${this.state.searchuser}`)
             .then(response => {
                 console.log('this is the response for searching user', response)
+                if(response.data.confirmed === false) {
+                    alert('USER DOES NOT EXIST')
+                }
+                 else {
+                     console.log('good') //onclick open up a chat with them
+                 }
             })
             .catch(err => {
                 console.log('this is the error for searching user', err)
