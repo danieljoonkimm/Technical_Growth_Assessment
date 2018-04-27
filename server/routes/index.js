@@ -16,6 +16,8 @@ import InviteuserController from '../controllers/InviteuserController.js';
 
 import UserschannelsController from '../controllers/UserschannelsController.js';
 
+import GetMessagesController from '../controllers/GetMessagesController.js';
+
 import passport from '../passport.js';
 
 const router = Router();
@@ -43,7 +45,7 @@ router.route('/checkteamexists')
     .post(CheckteamController)
 
 
-//make channel STILL NEED TO WORK ON THIS........MAKE SURE YOU DO THIS TO MAKE CHANNEL...
+//make channel
 router.route('/makechannel')
     .post(MakechannelController)
 
@@ -59,5 +61,9 @@ router.route('/searchusertoinvite/:userId')
 //send user id and channel id to userschannels table
 router.route('/sendtouserschannels')
     .post(UserschannelsController)
+
+//grab messages
+router.route('/getmessages/:userId/:channelId')
+    .get(GetMessagesController)
 
 export default router;

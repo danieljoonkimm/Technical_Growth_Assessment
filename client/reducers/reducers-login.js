@@ -1,8 +1,8 @@
 export default function (state = null, action) {
-    // console.log('this be that reducerrrrr', action.payload)
-    if(action.type === "HANDLEINFO_BUTTON_CLICKED"){
+    console.log('logggggggin');
+    if(action.type === "LOGIN_BUTTON_CLICKED"){
         return action.payload;
     }else{
         return state;
     }
-}
+}   

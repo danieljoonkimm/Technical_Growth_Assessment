@@ -5,6 +5,7 @@ import CheckTeamReducer from './reducers-teaminfo.js';
 import CreateChannelReducer from './reducers-createchannel.js';
 import SearchUserInfoReducer from './reducers-searchuserinfo.js';
 import ChannelsInfoToPageReducer from './reducers-channelsinfotopage.js';
+import ClickChannelReducer from '../reducers/reducers-clickchannel.js';
 
 const allReducers = combineReducers({
     LoginReducer : LoginReducer,
@@ -12,7 +13,8 @@ const allReducers = combineReducers({
     CheckTeamReducer : CheckTeamReducer,
     CreateChannelReducer : CreateChannelReducer,
     SearchUserInfoReducer : SearchUserInfoReducer,
-    ChannelsInfoToPageReducer : ChannelsInfoToPageReducer
+    ChannelsInfoToPageReducer : ChannelsInfoToPageReducer,
+    ClickChannelReducer : ClickChannelReducer
     
 });
 

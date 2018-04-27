@@ -11,7 +11,8 @@ import Workspace from '../components/Workspace.jsx';
 import Search from '../components/Search.jsx';
 
 import axios from 'axios';
-import Channel from '../components/channels/index.jsx'
+import Channel from '../components/channels/index.jsx';
+import Messages from '../components/messages/index.jsx';
 
 class Slackpage extends Component {
     constructor() {
@@ -20,7 +21,8 @@ class Slackpage extends Component {
         this.state = {
             loggedIn : false,
             confirmed : true,
-            // allchannels : []
+            allchannels : [],
+            allmessages : []
         }
     }
 
@@ -33,10 +35,22 @@ class Slackpage extends Component {
         if(this.props.ConfirmTeam !== null) {
             axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
                 .then(response => {
-                    console.log('this is the response for grabbing channel CWL', response)
-                    this.props.HandleInfoToPage(response.data.results)
+                    console.log('this is the response for grabbing channel CWL', response.data.results)
+                    // this.props.HandleInfoToPage(response.data.results)
+                    axios.get(`/api/getmessages/${this.props.LogUser.id}/${response.data.results[0].channelsId}`)
+                        .then(response => {
+                            console.log('this is resspponse from messages', response.data)
+                            this.setState({
+                                allmessages : response.data
+                            })
+                        })
+                        .catch(err => {
+                            console.log('this is the err', err)
+                        })
+                    this.setState({
+                        allchannels : response.data.results
+                    })
 
-                    //push the response data results to the all channels array
                 })
                 .catch(err => {
                     console.log('this is the error for the CWM', err)
@@ -55,9 +69,10 @@ class Slackpage extends Component {
 
     render() {
         //////THE H3 DOES NOT WORK PROPERLYYYYY!!!!!!!!!!!!!!
+        // console.log('this.setsetsetsetset', this.state.allchannels);
+        console.log('this is the current state', this.state)
         return(
-            <div>
-                <button onClick={() => { console.log('test', this.props.CreatetheChannel )}}/>
+            <div>             
                 <div>
                     <h3>
                         {/* {!this.props.confirmed && this.props.CreateTeam || this.props.ConfirmTeam.team_name} */}
@@ -68,8 +83,16 @@ class Slackpage extends Component {
 
                 {!this.state.loggedIn ? 
                 <div>
-                    <Channel allchannels={this.state.allchannels}/>
+
+                    <div>
+                    <Channel passchannels={this.state.allchannels}/>
+                    </div>
+
                     <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
+
+                    <div>
+                    <Messages passmessages={this.state.allmessages}/>
+                    </div>
                 </div>
 
                 : <Workspace/>

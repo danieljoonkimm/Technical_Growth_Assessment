@@ -7,4 +7,4 @@ import allReducers from '../reducers';
 
 const store = createStore(allReducers);
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("app"));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById("app")); 

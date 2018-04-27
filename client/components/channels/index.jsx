@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import ChannelEntries from './ChannelEntries.jsx';
+import ChannelList from './ChannelList.jsx';
+import Messages from '../messages/index.jsx';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -108,16 +109,16 @@ class Channel extends Component {
     
 
     render() {
+        // console.log('this is the props that is passed down from slackpage', this.props.passchannels)
         return(
             <div>
-
                 {!this.state.makeChannel ?
                 <div>
 
                 <button onClick={this.createChannelHandler.bind(this)}>CREATE CHANNEL</button>
 
                 <div>
-                <ChannelEntries/>
+                    <ChannelList channels={this.props.passchannels}/>
                 </div>
 
                 </div>
@@ -130,7 +131,6 @@ class Channel extends Component {
                 <button onClick={this.makeChannelHandler.bind(this)}>MAKE CHANNEL</button>
 
                 </div>
-                 //send to channelentries component all the channels that are made
 
                 }
             </div>

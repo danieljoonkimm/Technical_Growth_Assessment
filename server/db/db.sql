@@ -42,9 +42,11 @@ CREATE TABLE UsersChannels (
 
 CREATE TABLE messages (
     id int NOT NULL auto_increment,
-    messages varchar(255),
+    messages text,
     userId int NOT NULL,
     FOREIGN KEY(userId) REFERENCES users(id),
+    channelId int NOT NULL,
+    FOREIGN KEY(channelId) REFERENCES channels(id),
     PRIMARY KEY(id)
 );
 

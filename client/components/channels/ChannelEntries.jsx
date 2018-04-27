@@ -1,25 +1,26 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import axios from 'axios';
+
 import { bindActionCreators } from 'redux';
-import { CreateChannel } from '../../actions/actions-createchannel.js';
-import { SearchUserInfo } from '../../actions/actions-searchuserinfo.js';
-import { HandleInfoToPage } from '../../actions/actions-channelsinfotopage.js';
+import { connect } from 'react-redux';
+import { ClickChannel } from '../../actions/actions-clickchannel.js';
+
 
 class ChannelEntries extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-
+            
         }
     }
 
     render() {
-        console.log('this is props search user')
+        console.log('this is the props from channel', this.props.singleChannels.channelsId)
+        console.log('this is the clickthechannelreducer info', this.props.ClicktheChannel)
         return(
-            <div>
-                {this.props.CreatetheChannel}
-              
+            <div onClick= { () => this.props.ClickChannel(this.props.singleChannels.channelsId)}>
+                {this.props.singleChannels.channelsId}
             </div>
         )
     }
@@ -27,17 +28,14 @@ class ChannelEntries extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        CreatetheChannel : state.CreateChannelReducer,
-        SearchUser : state.SearchUserInfoReducer,
-        HandleInfo : state.ChannelsInfoToPageReducer
+        ClicktheChannel : state.ClickChannelReducer
+        
     };
 };
 
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
-        CreateChannel,
-        SearchUserInfo,
-        HandleInfoToPage
+        ClickChannel
     }, dispatch);
 };
 

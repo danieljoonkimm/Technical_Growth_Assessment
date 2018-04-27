@@ -3,12 +3,13 @@ import Login from './Login.jsx';
 import Workspace from './Workspace.jsx';
 import Slackpage from './Slackpage.jsx';
 import Search from './Search.jsx';
+import Messages from './messages/index.jsx';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 class App extends Component {
     constructor() {
-        super();
+        super();    
     }
 
     render() {
@@ -16,9 +17,10 @@ class App extends Component {
         console.log('this that create team name',this.props.CreateTeam)
         return(
             <div>
-                {/* <Login/>  */}
-                <Search/>
+                <Login/> 
+                {/* <Search/> */}
                 {/* {this.props.CreateTeam} */}
+                {/* <Messages/> */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>
 

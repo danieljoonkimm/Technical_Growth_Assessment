@@ -1,7 +1,7 @@
-export const HandleInfoToPage = (user) => {
-    console.log('this is action create channel', user);
+export const HandleInfoToPage = (data) => {
+    console.log('this is action create channel', data);
     return {
-        type: 'HANDLEINFO_BUTTON_CLICKED',
-        payload: user
+        type: 'CHNL_BUTTON_CLICKED',
+        payload: data
     };
 };
