@@ -14,6 +14,8 @@ import GetallchannelsController from '../controllers/GetallchannelsController.js
 
 import InviteuserController from '../controllers/InviteuserController.js';
 
+import UserschannelsController from '../controllers/UserschannelsController.js';
+
 import passport from '../passport.js';
 
 const router = Router();
@@ -53,5 +55,9 @@ router.route('/getallchannelsforteam/:userid/:teamid')
 router.route('/searchusertoinvite/:userId')
     .get(InviteuserController)
 
+
+//send user id and channel id to userschannels table
+router.route('/sendtouserschannels')
+    .post(UserschannelsController)
 
 export default router;

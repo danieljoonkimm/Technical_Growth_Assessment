@@ -45,12 +45,28 @@ class Channel extends Component {
             console.log('this that payload from channelll handler1415', payload)
             axios.post('/api/makechannel', payload)
                 .then(response => {
-                    console.log('this is the responseee for making channel', response.data.result.insertId)
-                    console.log('this is the responseee1sdfsdf', response)
+                    // console.log('this is log user', this.props.LogUser)
+                    // console.log('this is the responseee1sdfsdf', response)
                     this.props.CreateChannel(response.data.channelname)
                     this.setState({
                         makeChannel : !this.state.makeChannel
                     })
+                    
+                    const newPayload = {
+                        user_id: this.props.LogUser.id,
+                        channel_id: response.data.result.insertId
+                    }
+                    console.log('this is the new payload', newPayload)
+                    axios.post('/api/sendtouserschannels', newPayload)
+                        .then(response => {
+                            console.log('this is the response for sending data to user channel', response)
+                        })
+                        .catch(err => {
+                            console.log('this is the error for sending data to user channel', err)
+                        })
+                        // whereever the endpoint + controller, insert into the UsersChannels table 
+                        // the user_id and channel_id from the newPayload
+                    
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)
@@ -69,6 +85,21 @@ class Channel extends Component {
                     this.setState({
                         makeChannel : !this.state.makeChannel
                     })
+
+                    const newPayload = {
+                        user_id: this.props.LogUser.id,
+                        channel_id: response.data.result.insertId
+                    }
+
+                    console.log('this is the new payload', newPayload)
+                    axios.post('/api/sendtouserschannels', newPayload)
+                        .then(response => {
+                            console.log('this is the response for sending data to user channel', response)
+                        })
+                        .catch(err => {
+                            console.log('this is the error for sending data to user channel', err)
+                        })
+                        
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)

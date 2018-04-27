@@ -18,7 +18,7 @@ class ChannelEntries extends Component {
         return(
             <div>
                 {this.props.CreatetheChannel}
-                {this.props.SearchUser}
+                {/* {this.props.SearchUser} */}
               
             </div>
         )
