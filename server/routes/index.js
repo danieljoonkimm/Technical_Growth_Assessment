@@ -48,7 +48,7 @@ router.route('/makechannel')
     .post(MakechannelController)
 
 //get all channels for team
-router.route('/getallchannelsforteam/:userid/:teamid')
+router.route('/getallchannelsforteam/:userid/:teamid/')
     .get(GetallchannelsController)
 
 //search user to invite to channel

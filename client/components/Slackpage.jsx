@@ -5,6 +5,7 @@ import {LoginUser} from '../actions/actions-login.js';
 import { TeamName } from '../actions/actions-createteam.js';
 import { CheckTeam} from '../actions/actions-teaminfo.js';
 import { CreateChannel } from '../actions/actions-createchannel.js';
+import { HandleInfoToPage } from '../actions/actions-channelsinfotopage.js';
 
 import Workspace from '../components/Workspace.jsx';
 import Search from '../components/Search.jsx';
@@ -33,6 +34,8 @@ class Slackpage extends Component {
             axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
                 .then(response => {
                     console.log('this is the response for grabbing channel CWL', response)
+                    this.props.HandleInfoToPage(response.data.results)
+
                     //push the response data results to the all channels array
                 })
                 .catch(err => {
@@ -81,7 +84,8 @@ const mapStateToProps = (state) => {
         LogUser: state.LoginReducer,
         CreateTeam : state.CreateTeamReducer,
         ConfirmTeam : state.CheckTeamReducer,
-        CreatetheChannel : state.CreateChannelReducer
+        CreatetheChannel : state.CreateChannelReducer,
+        HandleInfo : state.ChannelsInfoToPageReducer
     };
 };
 
@@ -90,7 +94,8 @@ const matchDispatchToProps = (dispatch) => {
         LoginUser,
         TeamName,
         CheckTeam,
-        CreateChannel
+        CreateChannel,
+        HandleInfoToPage
     }, dispatch);
 };
 

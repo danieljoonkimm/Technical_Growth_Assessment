@@ -8,6 +8,7 @@ import { LoginUser } from '../../actions/actions-login.js';
 import { TeamName } from '../../actions/actions-createteam.js';
 import { CheckTeam} from '../../actions/actions-teaminfo.js';
 import { CreateChannel } from '../../actions/actions-createchannel.js';
+import { HandleInfoToPage } from '../../actions/actions-channelsinfotopage.js';
 
 class Channel extends Component {
     constructor(props) {
@@ -142,7 +143,8 @@ const mapStateToProps = (state) => {
         LogUser: state.LoginReducer,
         CreateTeam : state.CreateTeamReducer,
         ConfirmTeam : state.CheckTeamReducer,
-        CreatetheChannel : state.CreateChannelReducer
+        CreatetheChannel : state.CreateChannelReducer,
+        HandleInfo : state.ChannelsInfoToPageReducer
     };
 };
 
@@ -151,7 +153,8 @@ const matchDispatchToProps = (dispatch) => {
         LoginUser,
         TeamName,
         CheckTeam,
-        CreateChannel
+        CreateChannel,
+        HandleInfoToPage
     }, dispatch);
 };
 

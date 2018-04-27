@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { CreateChannel } from '../../actions/actions-createchannel.js';
 import { SearchUserInfo } from '../../actions/actions-searchuserinfo.js';
+import { HandleInfoToPage } from '../../actions/actions-channelsinfotopage.js';
 
 class ChannelEntries extends Component {
     constructor(props) {
@@ -18,7 +19,6 @@ class ChannelEntries extends Component {
         return(
             <div>
                 {this.props.CreatetheChannel}
-                {/* {this.props.SearchUser} */}
               
             </div>
         )
@@ -28,14 +28,16 @@ class ChannelEntries extends Component {
 const mapStateToProps = (state) => {
     return {
         CreatetheChannel : state.CreateChannelReducer,
-        SearchUser : state.SearchUserInfoReducer
+        SearchUser : state.SearchUserInfoReducer,
+        HandleInfo : state.ChannelsInfoToPageReducer
     };
 };
 
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
         CreateChannel,
-        SearchUserInfo
+        SearchUserInfo,
+        HandleInfoToPage
     }, dispatch);
 };
 
