@@ -6,6 +6,7 @@ import { TeamName } from '../actions/actions-createteam.js';
 import { CheckTeam} from '../actions/actions-teaminfo.js';
 import { CreateChannel } from '../actions/actions-createchannel.js';
 import { HandleInfoToPage } from '../actions/actions-channelsinfotopage.js';
+import { ClickChannel } from '../actions/actions-clickchannel.js';
 
 import Workspace from '../components/Workspace.jsx';
 import Search from '../components/Search.jsx';
@@ -58,6 +59,8 @@ class Slackpage extends Component {
                 //if they're creating a new team
         } 
     }
+
+    
     
     logoutHandler() {
         console.log('this be that logout handler')
@@ -75,6 +78,7 @@ class Slackpage extends Component {
             <div>             
                 <div>
                     <h3>
+                        {/* <button onClick={ () => {this.props.ClicktheChannel}}></button> */}
                         {/* {!this.props.confirmed && this.props.CreateTeam || this.props.ConfirmTeam.team_name} */}
                     </h3>
                 </div>
@@ -108,7 +112,8 @@ const mapStateToProps = (state) => {
         CreateTeam : state.CreateTeamReducer,
         ConfirmTeam : state.CheckTeamReducer,
         CreatetheChannel : state.CreateChannelReducer,
-        HandleInfo : state.ChannelsInfoToPageReducer
+        HandleInfo : state.ChannelsInfoToPageReducer,
+        ClicktheChannel : state.ClickChannelReducer
     };
 };
 
@@ -118,7 +123,8 @@ const matchDispatchToProps = (dispatch) => {
         TeamName,
         CheckTeam,
         CreateChannel,
-        HandleInfoToPage
+        HandleInfoToPage,
+        ClickChannel
     }, dispatch);
 };
 
