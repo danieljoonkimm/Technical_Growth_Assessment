@@ -56,7 +56,7 @@ class Channel extends Component {
                         user_id: this.props.LogUser.id,
                         channel_id: response.data.result.insertId
                     }
-                    console.log('this is the new payload', newPayload)
+                    // console.log('this is the new payload', newPayload)
                     axios.post('/api/sendtouserschannels', newPayload)
                         .then(response => {
                             console.log('this is the response for sending data to user channel', response)
@@ -64,8 +64,6 @@ class Channel extends Component {
                         .catch(err => {
                             console.log('this is the error for sending data to user channel', err)
                         })
-                        // whereever the endpoint + controller, insert into the UsersChannels table 
-                        // the user_id and channel_id from the newPayload
                     
                 })
                 .catch(err => {
@@ -99,7 +97,7 @@ class Channel extends Component {
                         .catch(err => {
                             console.log('this is the error for sending data to user channel', err)
                         })
-                        
+
                 })
                 .catch(err => {
                     console.log('this is the errror for makinggg channel', err)

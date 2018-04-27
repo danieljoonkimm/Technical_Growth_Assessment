@@ -7,7 +7,7 @@ const UserschannelsController = (req, res) => {
         if(err) {
             console.log('this is the errror from the userschannels controller', err)
         }
-        // res.send(result);
+        res.send(result);
     })
 };
 
