@@ -17,7 +17,7 @@ class App extends Component {
         return(
             <div>
                 {/* <Login/>  */}
-                {/* <Search/> */}
+                <Search/>
                 {/* {this.props.CreateTeam} */}
                 {!this.props.LoginUser ? <Workspace/> : <Slackpage/>}
             </div>

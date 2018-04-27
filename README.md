@@ -91,8 +91,8 @@ It is up to you to ask GOOD, clarifying questions.
 	- It doesn't have to be the most scalable and perfect implementation
 	- I should be able to do the following:
 		- Create a Slack Team -DONE
-		- Invite users to my Slack Team
-		- Create channels within my Slack Team -not yet...almost
+		- Invite users to my Slack Team - CAN SEARCH FOR USER
+		- Create channels within my Slack Team -DONE but cant grab the channel when i log into team
 		- Send messages to specific channels
 		- Direct Message users
 		- Toggle between the channels and DMs

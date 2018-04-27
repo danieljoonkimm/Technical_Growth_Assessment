@@ -1,4 +1,7 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { SearchUserInfo } from '../actions/actions-searchuserinfo.js';
 import axios from 'axios';
 
 class Search extends Component {
@@ -20,12 +23,14 @@ class Search extends Component {
     searchUserHandler() {
         axios.get(`/api/searchusertoinvite/${this.state.searchuser}`)
             .then(response => {
-                console.log('this is the response for searching user', response)
+                console.log('this is the response for searching user', response.data.result)
                 if(response.data.confirmed === false) {
                     alert('USER DOES NOT EXIST')
                 }
                  else {
                      console.log('good') //onclick open up a chat with them
+                     //start a direct message with them
+                     this.props.SearchUserInfo(response.data.result)
                  }
             })
             .catch(err => {
@@ -44,4 +49,16 @@ class Search extends Component {
     }
 }
 
-export default Search;
+const mapStateToProps = (state) => {
+    return {
+        SearchUser : state.SearchUserInfoReducer
+    };
+};
+
+const matchDispatchToProps = (dispatch) => {
+    return bindActionCreators({
+        SearchUserInfo
+    }, dispatch);
+};
+
+export default connect(mapStateToProps, matchDispatchToProps)(Search);
