@@ -41,6 +41,7 @@ class Slackpage extends Component {
                     axios.get(`/api/getmessages/${this.props.LogUser.id}/${response.data.results[0].channelsId}`)
                         .then(response => {
                             console.log('this is resspponse from messages', response.data)
+                            // this.props.HandleInfoToPage(response.data)
                             this.setState({
                                 allmessages : response.data
                             })

@@ -4,7 +4,8 @@ import axios from 'axios';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { ClickChannel } from '../../actions/actions-clickchannel.js';
-import {LoginUser} from '../../actions/actions-login.js';
+import { LoginUser } from '../../actions/actions-login.js';
+import { ChannelId } from '../../actions/actions-channelid.js';
 
 
 class ChannelEntries extends Component {
@@ -18,10 +19,12 @@ class ChannelEntries extends Component {
     
     onClickHandler() {
         console.log('its working')
-        axios.get(`/api/getmessages/${this.props.LogUser.id}/${this.props.singleChannels.channelsId}`) 
+        axios.get(`/api/getmessages/${this.props.LogUser.id}/${this.props.singleChannels.channelsId}`)
             .then(response => {
                 console.log('this is the response from channelentry click handler', response.data)
                 this.props.ClickChannel(response.data)
+                // console.log('.... ', this.props.singleChannels.channelsId);
+                this.props.ChannelId(this.props.singleChannels.channelsId)
             })
             .catch(err => {
                 console.log('this isthe error for the catch', err)
@@ -29,9 +32,9 @@ class ChannelEntries extends Component {
     }
 
     render() {
-        console.log('this is the props from channel', this.props.singleChannels.channelsId)
-        console.log('this is the clickthechannelreducer info', this.props.ClicktheChannel)
-        console.log('this is the loguserrrrrrrr', this.props.LogUser)
+        // console.log('this is the props from channel', this.props.singleChannels)
+        // console.log('this is the clickthechannelreducer info', this.props.ClicktheChannel)
+        // console.log('this is the loguserrrrrrrr', this.props.LogUser)
         // this.props.ClickChannel(this.props.singleChannels.channelsId);
         
         return(
@@ -45,7 +48,8 @@ class ChannelEntries extends Component {
 const mapStateToProps = (state) => {
     return {
         ClicktheChannel : state.ClickChannelReducer,
-        LogUser: state.LoginReducer
+        LogUser: state.LoginReducer,
+        ChannelIdInfo : state.ChannelIdReducer
         
     };
 };
@@ -53,7 +57,8 @@ const mapStateToProps = (state) => {
 const matchDispatchToProps = (dispatch) => {
     return bindActionCreators({
         ClickChannel,
-        LoginUser
+        LoginUser,
+        ChannelId
     }, dispatch);
 };
 

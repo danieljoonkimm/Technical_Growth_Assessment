@@ -6,6 +6,7 @@ import CreateChannelReducer from './reducers-createchannel.js';
 import SearchUserInfoReducer from './reducers-searchuserinfo.js';
 import ChannelsInfoToPageReducer from './reducers-channelsinfotopage.js';
 import ClickChannelReducer from '../reducers/reducers-clickchannel.js';
+import ChannelIdReducer from '../reducers/reducers-channelid.js';
 
 const allReducers = combineReducers({
     LoginReducer : LoginReducer,
