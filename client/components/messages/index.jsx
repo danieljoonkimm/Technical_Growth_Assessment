@@ -12,6 +12,9 @@ import { HandleInfoToPage } from '../../actions/actions-channelsinfotopage.js';
 import { ClickChannel } from '../../actions/actions-clickchannel.js';
 import { ChannelId } from '../../actions/actions-channelid.js';
 
+import io from 'socket.io-client';
+const socket = io('http://localhost:8080')
+
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -22,24 +25,26 @@ class Messages extends Component {
         }
     }
 
-    // componentDidMount() {
-    //     console.log('this is CDM')
-       
-    // }
+    componentWillReceiveProps() {
+        console.log('this is when component receives props')
+        this.setState({
+            listofmessages : this.props.passmessages
+        })
+    }
 
     onTextHandler(e) {
-        console.log('this is state', this.state)
+        // console.log('this is state', this.state)
         this.setState({
             [e.target.name] : e.target.value
         })
     }
 
-    sendMessageHandler() {
+    sendMessageHandler(e) {
+        console.log('this is pass messages', this.props.passmessages)
         const payload = {
             messagetext : this.state.messagetext,
             userId : this.props.LogUser.id,
             channelId : this.props.passmessages[0] ? this.props.passmessages[0].channelId : 1
-            //userid, channelid
         }
         const payload2 = {
             messages : this.state.messagetext,
@@ -61,6 +66,17 @@ class Messages extends Component {
             .catch(err => {
                 console.log('this is the errrrr from send message', err)
             })
+
+            e.preventDefault()
+            console.log('this is socket firing', this.state.listofmessages)
+            console.log('this is the payload', payload)
+            console.log('this is the messssagesgsform index', this.state.listofmessages[this.state.listofmessages.length-1])
+            socket.emit('messages', {
+                message: payload.messagetext
+
+            })
+           
+            
     }
 
     render() {
@@ -72,12 +88,13 @@ class Messages extends Component {
         // console.log('this is the channel id info', this.props.ChannelIdInfo)
         //NEED TO PASS THE CHANNEL ID ALONG WITH THE SEND MESSAGE HANDLER!!!!!!!
         // console.log('this.props.passmessages', this.props.passmessages)
+        console.log('this is my propssssssssssss: ', socket);
         return(
             <div>
                 
                 {
-                    this.props.ClicktheChannel ?
-                    this.props.ClicktheChannel.map ( (message, key) => {
+                    this.props.listofmessages ?
+                    this.props.listofmessages.map ( (message, key) => {
                         return <MessageEntries key={key} singleMessages={message}/>
                     })
                     :
@@ -87,8 +104,11 @@ class Messages extends Component {
                 }
 
                 <div>
-                    <input name='messagetext' onChange={this.onTextHandler.bind(this)} placeholder='send message..'></input>
+                    <input name='messagetext' type='text' onChange={this.onTextHandler.bind(this)} placeholder='send message..'></input>
                     <button onClick={this.sendMessageHandler.bind(this)}>Send Message</button>
+
+                    
+                    
                 </div>
             </div>
         )

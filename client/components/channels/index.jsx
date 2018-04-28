@@ -116,6 +116,7 @@ class Channel extends Component {
                 <div>
 
                 <button onClick={this.createChannelHandler.bind(this)}>CREATE CHANNEL</button>
+                {/* <button onClick={this.joinChannelHandler.bind(this)}>JOIN CHANNEL</button> */}
 
                 <div>
                     <ChannelList channels={this.props.passchannels}/>

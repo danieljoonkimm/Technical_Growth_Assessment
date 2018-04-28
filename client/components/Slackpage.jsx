@@ -15,6 +15,9 @@ import axios from 'axios';
 import Channel from '../components/channels/index.jsx';
 import Messages from '../components/messages/index.jsx';
 
+import io from 'socket.io-client';
+const socket = io('http://localhost:8080')
+
 class Slackpage extends Component {
     constructor() {
         super();
@@ -23,9 +26,19 @@ class Slackpage extends Component {
             loggedIn : false,
             confirmed : true,
             allchannels : [],
-            allmessages : []
+            allmessages : [],
         }
+        this.confirmAndReceiveTeams = this.confirmAndReceiveTeams.bind(this);
     }
+    // componentWillMount() {
+    //     console.log('this is props for user name', this.props.LogUser)
+    //     console.log('this is the props for create team', this.props.CreateTeam)
+    //     console.log('this is the create channel props', this.props.CreatetheChannel)
+
+    //     //if logging in with existing team
+
+    //     this.confirmAndReceiveTeams();
+    // }
 
     componentWillMount() {
         console.log('this is props for user name', this.props.LogUser)
@@ -33,6 +46,13 @@ class Slackpage extends Component {
         console.log('this is the create channel props', this.props.CreatetheChannel)
 
         //if logging in with existing team
+
+        this.confirmAndReceiveTeams();
+    }
+    
+
+
+    confirmAndReceiveTeams() {
         if(this.props.ConfirmTeam !== null) {
             axios.get(`/api/getallchannelsforteam/${this.props.LogUser.id}/${this.props.ConfirmTeam.id}`)
                 .then(response => {
@@ -59,6 +79,15 @@ class Slackpage extends Component {
                 })
                 //if they're creating a new team
         } 
+    }
+
+    componentDidMount () {
+        socket.on('connection', () => {
+            console.log('connected to server')
+        })
+        socket.on('messages', (data) => {
+            console.log('this be the messsssssegesset', data.message)
+        })
     }
 
     
@@ -97,8 +126,13 @@ class Slackpage extends Component {
                             <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
 
                             <div>
-                            <Messages passmessages={this.state.allmessages}/>
+                            <Messages passmessages={this.state.allmessages} socket={socket}/>
                             </div>
+
+                            <div>
+                            <Search/>
+                            </div>
+                            
                         </div>
                         :
                         <div>
@@ -115,6 +149,10 @@ class Slackpage extends Component {
                         <Messages passmessages={this.props.ClicktheChannel}/>
                         
                         </div>
+
+                        <div>
+                            <Search/>
+                            </div>
                     </div>
 
                 : <Workspace/>
