@@ -23,12 +23,8 @@ class Messages extends Component {
     }
 
     // componentDidMount() {
-    //     console.log('this props.passmessages', this.props.passmessages)
-    //     if(this.props.passmessages > 0) {
-    //         this.setState({ 
-    //             listofmessages: this.props.passmessages
-    //         })
-    //     }
+    //     console.log('this is CDM')
+       
     // }
 
     onTextHandler(e) {
@@ -56,7 +52,9 @@ class Messages extends Component {
                 console.log('this is the repsonse from the send message', response)
                 this.state.listofmessages.push(payload2)
                 const newarray = this.state.listofmessages.slice();
+                console.log('this is the new array',newarray)
                 this.setState({
+                    listofmessages : newarray
                 })
                 console.log('this the new arrrrrrray', newarray);
             })
