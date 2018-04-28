@@ -86,18 +86,35 @@ class Slackpage extends Component {
                 <h2>{this.props.LogUser.username}</h2>
 
                 {!this.state.loggedIn ? 
-                <div>
+                    this.props.ClicktheChannel === null ?   
+                        <div>
 
-                    <div>
-                    <Channel passchannels={this.state.allchannels}/>
+                            <div>
+                            <Channel passchannels={this.state.allchannels}/>
+                            </div>
+
+                            <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
+
+                            <div>
+                            <Messages passmessages={this.state.allmessages}/>
+                            </div>
+                        </div>
+                        :
+                        <div>
+
+                        <div>
+                        <Channel passchannels={this.state.allchannels}/>
+                        </div>
+
+                        <div>
+                        <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
+                        </div>
+
+                        <div>
+                        <Messages passmessages={this.props.ClicktheChannel}/>
+                        
+                        </div>
                     </div>
-
-                    <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
-
-                    <div>
-                    <Messages passmessages={this.state.allmessages}/>
-                    </div>
-                </div>
 
                 : <Workspace/>
                 }

@@ -18,6 +18,8 @@ import UserschannelsController from '../controllers/UserschannelsController.js';
 
 import GetMessagesController from '../controllers/GetMessagesController.js';
 
+import PostMessagesController from '../controllers/PostmessagesController.js';
+
 import passport from '../passport.js';
 
 const router = Router();
@@ -65,5 +67,9 @@ router.route('/sendtouserschannels')
 //grab messages
 router.route('/getmessages/:userId/:channelId')
     .get(GetMessagesController)
+
+//send messages
+router.route('/postmessage')
+    .post(PostMessagesController)
 
 export default router;
