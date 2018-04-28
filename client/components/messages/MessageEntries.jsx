@@ -8,9 +8,9 @@ class MessageEntries extends Component {
     render() {
         // console.log('this.props.message', this.props.singleMessages.messages)
         return(
-            <div>
+            <span id='message-entries'>
                 {this.props.singleMessages.messages}
-            </div>
+            </span>
         )
     }
 }

@@ -155,7 +155,7 @@ class Workspace extends Component {
 
     render() {
         return(
-            <div>
+            <div className='workspace-container'>
                 
                 {this.state.status === 1 ? 
 
@@ -163,13 +163,13 @@ class Workspace extends Component {
 
                 <h1>Sign in to your workspace</h1>
 
-                <div>
+                <div id='workspace-input'>
                     <input onChange={this.onTextHandler.bind(this)} name='team' placeholder='your-workspace.url'></input>.slack.com
                 </div>
 
-                <div>
-                    <button onClick={this.continueHandler.bind(this)}>Continue</button>
-                    <button onClick={this.createWorkspaceHandler.bind(this)}>Create Workspace</button>
+                <div className='workspace-button-container'>
+                    <button id='workspace-buttons' onClick={this.continueHandler.bind(this)}>Continue</button>
+                    <button id='workspace-buttons' onClick={this.createWorkspaceHandler.bind(this)}>Create Workspace</button>
                 </div>
 
                 </div>
@@ -181,7 +181,7 @@ class Workspace extends Component {
 
                 <div>
                     <input name='username' placeholder='enter username' onChange={this.onTextHandler.bind(this)}></input>
-                    <button onClick={this.confirmUserHandler.bind(this)}>CONFIRM USER EXISTS</button>
+                    <button id='workspace-buttons' onClick={this.confirmUserHandler.bind(this)}>CONFIRM USER EXISTS</button>
                 </div>
 
                 </div>
@@ -194,7 +194,7 @@ class Workspace extends Component {
 
                 <div>
                     <input name='password' type='password' placeholder='enter password' onChange={this.onTextHandler.bind(this)}></input>
-                    <button onClick={this.validatePassword.bind(this)}>VALIDATE PASSWORD</button>
+                    <button id='workspace-buttons' onClick={this.validatePassword.bind(this)}>VALIDATE PASSWORD</button>
                 </div>
 
                 </div>

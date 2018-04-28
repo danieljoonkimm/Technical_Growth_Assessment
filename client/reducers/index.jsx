@@ -15,8 +15,8 @@ const allReducers = combineReducers({
     CreateChannelReducer : CreateChannelReducer,
     SearchUserInfoReducer : SearchUserInfoReducer,
     ChannelsInfoToPageReducer : ChannelsInfoToPageReducer,
-    ClickChannelReducer : ClickChannelReducer
-    
+    ClickChannelReducer : ClickChannelReducer,
+    ChannelIdReducer: ChannelIdReducer
 });
 
 export default allReducers;

@@ -23,7 +23,7 @@ class ChannelEntries extends Component {
             .then(response => {
                 console.log('this is the response from channelentry click handler', response.data)
                 this.props.ClickChannel(response.data)
-                // console.log('.... ', this.props.singleChannels.channelsId);
+                console.log('.... ', response.data);
                 this.props.ChannelId(this.props.singleChannels.channelsId)
             })
             .catch(err => {
@@ -32,14 +32,12 @@ class ChannelEntries extends Component {
     }
 
     render() {
-        // console.log('this is the props from channel', this.props.singleChannels)
-        // console.log('this is the clickthechannelreducer info', this.props.ClicktheChannel)
-        // console.log('this is the loguserrrrrrrr', this.props.LogUser)
-        // this.props.ClickChannel(this.props.singleChannels.channelsId);
         
         return(
-            <div onClick= {this.onClickHandler.bind(this)}>
-                {this.props.singleChannels.channelsId}
+            <div>
+                <div className='channelentries' onClick= {this.onClickHandler.bind(this)}>
+                    {this.props.singleChannels.channelsId}
+                </div>
             </div>
         )
     }

@@ -113,12 +113,12 @@ class Channel extends Component {
         return(
             <div>
                 {!this.state.makeChannel ?
-                <div>
+                <div className='create-channel-button-container'>
 
-                <button onClick={this.createChannelHandler.bind(this)}>CREATE CHANNEL</button>
+                <button id='buttons' onClick={this.createChannelHandler.bind(this)}>CREATE CHANNEL</button>
                 {/* <button onClick={this.joinChannelHandler.bind(this)}>JOIN CHANNEL</button> */}
 
-                <div>
+                <div className='channelbar-clicked'>
                     <ChannelList channels={this.props.passchannels}/>
                 </div>
 
@@ -129,7 +129,7 @@ class Channel extends Component {
                 <div>
 
                 <input onChange={this.onTextHandler.bind(this)} name='channelname' placeholder='enter channel name..'></input>
-                <button onClick={this.makeChannelHandler.bind(this)}>MAKE CHANNEL</button>
+                <button id='buttons' onClick={this.makeChannelHandler.bind(this)}>MAKE CHANNEL</button>
 
                 </div>
 

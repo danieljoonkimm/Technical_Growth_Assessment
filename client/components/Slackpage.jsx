@@ -105,7 +105,7 @@ class Slackpage extends Component {
         // console.log('this.setsetsetsetset', this.state.allchannels);
         console.log('this is the current state', this.state)
         return(
-            <div>             
+            <div className='home'>             
                 <div>
                     <h3>
                         {/* <button onClick={ () => {this.props.ClicktheChannel}}></button> */}
@@ -113,45 +113,49 @@ class Slackpage extends Component {
                     </h3>
                 </div>
 
-                <h2>{this.props.LogUser.username}</h2>
 
                 {!this.state.loggedIn ? 
                     this.props.ClicktheChannel === null ?   
-                        <div>
+                    <div>
+                            <div className='sidebar'>
+                                <h2 className='username-title'>{this.props.LogUser.username}</h2>
 
-                            <div>
-                            <Channel passchannels={this.state.allchannels}/>
+                                <div className='channel-sidebar'>
+                                <Channel passchannels={this.state.allchannels}/>
+                                </div>
+
+                                <div>
+                                <Search/>
+                                </div>
+
+                                <button id='buttons' onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
+
+
+                                
                             </div>
 
-                            <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
-
-                            <div>
-                            <Messages passmessages={this.state.allmessages} socket={socket}/>
+                            <div className='message-container'>
+                                <Messages passmessages={this.state.allmessages} socket={socket}/>
                             </div>
-
-                            <div>
-                            <Search/>
-                            </div>
-                            
                         </div>
                         :
-                        <div>
+                        <div className='sidebar'>
+                            <h2 className='username-title'>{this.props.LogUser.username}</h2>
 
-                        <div>
-                        <Channel passchannels={this.state.allchannels}/>
-                        </div>
+                            <div className='channel-sidebar'>
+                                <Channel passchannels={this.state.allchannels}/>
+                            </div>
 
-                        <div>
-                        <button onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
-                        </div>
+                            <div>
+                                <Search/>
+                            </div>
 
-                        <div>
-                        <Messages passmessages={this.props.ClicktheChannel}/>
-                        
-                        </div>
+                            <button id='buttons' onClick={this.logoutHandler.bind(this)}>LOGOUT</button>
 
-                        <div>
-                            <Search/>
+
+                            <div className='message-container'>
+                                <Messages passmessages={this.props.ClicktheChannel}/>
+                            
                             </div>
                     </div>
 

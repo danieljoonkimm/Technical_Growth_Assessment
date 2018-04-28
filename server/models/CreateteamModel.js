@@ -1,8 +1,8 @@
 import connection from '../db';
 
-const CreateteamModel = function (reqbody, callback) {
+const CreateteamModel = (reqbody, callback) => {
     console.log('this is the create team modellll', reqbody)
-    connection.query(`INSERT INTO teams (team_name)  VALUES('${reqbody.team}')`, function(err, result, fields) {
+    connection.query(`INSERT INTO teams (team_name)  VALUES('${reqbody.team}')`, (err, result, fields) => {
         console.log('the the the result',result)
         if(err) {
             throw err;
@@ -12,5 +12,6 @@ const CreateteamModel = function (reqbody, callback) {
         }
     })
 }
+
 
 export default CreateteamModel;

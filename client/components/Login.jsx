@@ -61,15 +61,15 @@ class Login extends Component {
         return(
             <div>
                 
-                <div onChange={this.onTextHandler.bind(this)}>
+                <div className='login-input-container' onChange={this.onTextHandler.bind(this)}>
                     Username: <input name='username' placeholder='enter username..'></input>
                     <br/>
                     Password: <input type='password' name='password' placeholder='enter password..'></input>
                 </div>
 
-                <div>
-                    <button onClick={this.onLoginHandler.bind(this)}>Sign In</button>
-                    <button onClick={this.onSignupHandler.bind(this)}>Sign Up</button>
+                <div className='workspace-button-container'>
+                    <button id='workspace-buttons' onClick={this.onLoginHandler.bind(this)}>Sign In</button>
+                    <button id='workspace-buttons' onClick={this.onSignupHandler.bind(this)}>Sign Up</button>
                 </div>
 
             </div>

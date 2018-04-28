@@ -17,7 +17,7 @@ const io = SocketIO(server);
 io.on('connection', socket => {
     console.log('user has connected')
   socket.on('messages', (payload) => {
-      console.log('this is getting messageshelllo', payload)
+      console.log('this is getting messages helllo', payload)
     io.emit('messages', payload)
   })
 })

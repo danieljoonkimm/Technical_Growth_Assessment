@@ -41,9 +41,9 @@ class Search extends Component {
 
     render() {
         return(
-            <div>
+            <div className='search-container'>
                 <input name='searchuser' onChange={this.onTextHandler.bind(this)} placeholder='search user to invite..'></input>
-                <button onClick={this.searchUserHandler.bind(this)}>search user</button>
+                <button id='buttons' onClick={this.searchUserHandler.bind(this)}>search user</button>
             </div>
         )
     }

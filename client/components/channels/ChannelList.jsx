@@ -21,7 +21,7 @@ class ChannelList extends Component {
         // console.log('thfsfsegsgsegsfis', this.props.channels)
         return(
         
-            <div>
+            <div className='channel-container'>
                 {/* <button onClick={() => { console.log('test1', this.props.HandleInfo )}}>handle</button> */}
                 {this.props.channels.map ( (channel, key) => {
                      return <ChannelEntries key={key} singleChannels={channel}/>

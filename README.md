@@ -1,7 +1,27 @@
 # Technical Growth Assessment
 
 **Deadline: W7D6 12PM** 
+----------------------------------------------------------
+HOW TO START:
+NPM INSTALL
+NPM RUN BUILD
+NPM START
+NPM RUN MYSQL
+WHEN TYPING MYSQL : mysql -u root -p
 
+DID NOT HAVE TIME TO SET UP A JOIN CHNL THROUGH A DIFFERENT USER.
+
+MUST MANUALLY INPUT USERS JOINING CHNL:
+IF THERE ARE 3 CHNLS EXISTING THAT I MADE:
+insert into userschannels (userId, channelsId) values (3, 2);
+insert into userschannels (userId, channelsId) values (3, 3);
+insert into userschannels (userId, channelsId) values (3, 4);
+
+BUGS:
+- ONCE YOU SIGN UP YOU HAVE TO REFRESH PAGE and SIGN IN TO WORKSPACE, YOU CAN MAKE CHANNELS, MUST REFRESH AND LOGIN TO SEE CREATED CHANNELS.
+
+*SOCKETS DO WORK, BUT NEED TO CLICK THE CHNL AGAIN TO SEE THE RERENDER.
+----------------------------------------------------------
 ## Format
 ```plaintext
 I am your project manager. I want to create a real-time messaging company much like Slack. 
@@ -96,8 +116,6 @@ It is up to you to ask GOOD, clarifying questions.
 		- Send messages to specific channels
 		- Direct Message users
 		- Toggle between the channels and DMs
-		- DANIELS JOB - when logging in need to render all data when logging in from teams 
-		to login in (render their channels/dM channels, messages)
 4. UI/UX should mirror Slack's Web App
 	- Again, I am not expecting perfection
 	- Use your best judgment on what looks sufficient

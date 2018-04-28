@@ -1,0 +1,134 @@
+.home {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.sidebar {
+    background-color: purple;
+    width: 21vw;
+    /* border: 1px solid black; */
+    top: 0;
+}
+
+.search-container {
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.create-channel-button-container {
+    text-align: center;
+}
+
+.channel-container {
+    margin-top: 5px;
+}
+
+/* .channelbar-clicked {
+    background-color: purple;
+    top: 0;
+    height: 82vh;
+} */
+
+.channelentries {
+    display: flex;
+    height: 5vh;
+    width: 19vw;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+}
+
+.channelentries:hover {
+    background-color: violet;
+}
+
+.channel-sidebar {
+    margin-top: -2vh;
+    top: 0;
+    height: 82vh;
+    width: 20vw;
+}
+
+.message-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+    margin-left: 21vw;
+    margin-bottom: 2vh;
+    width: 80vw;
+    height: 99vh;
+}
+
+.messages-bottom {
+    display: flex;
+    flex-direction: row;
+}
+
+.message-input {
+    width: 70vw;
+    height: 25px;
+}
+
+.message-button {
+    display: flex;
+    align-items: flex-end;
+}
+
+.username-title {
+    font-size: 30px;
+    background-color: purple;
+    width: 20vw;
+    margin-top: -3vh;
+    text-align: center;
+}
+
+.workspace-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#workspace-input {
+    text-align: center;
+}
+
+#workspace-buttons {
+    margin: 10px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: purple;
+    border-radius: 1rem;
+}
+
+.workspace-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-input-container {
+    font-size: 20px;
+}
+
+#buttons {
+    border-radius: 1rem;
+    background-color: cyan;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
+
+#message-entries {
+    padding: 5px;
+}
