@@ -25,7 +25,7 @@ class Login extends Component {
         console.log('this is login handler')
         const payload = {
             username : this.state.username,
-            password : this.state.password
+            password : this.state.password,
         }
         axios.post('api/user/login', payload)
             .then(response => {
@@ -80,6 +80,7 @@ class Login extends Component {
 const mapStateToProps = (state) => {
     return {
         LogUser: state.LoginReducer
+        
     };
 };
 

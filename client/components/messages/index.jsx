@@ -80,6 +80,7 @@ class Messages extends Component {
 
     render() {
         console.log('this is state of clicking channel', this.props.ChannelIdInfo)
+        console.log('hello')
         // console.log('this is props for user name', this.props.LogUser)
         // console.log('this is the props for create team', this.props.CreateTeam)
         // console.log('this is the create channel propssss', this.props.CreatetheChannel)
