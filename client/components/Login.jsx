@@ -18,7 +18,7 @@ class Login extends Component {
         console.log('this is state', this.state)
         this.setState({
             [e.target.name] : e.target.value
-        })
+        });
     }
 
     onLoginHandler() {
@@ -43,13 +43,16 @@ class Login extends Component {
             username : this.state.username,
             password : this.state.password
         }
+        console.log('this is payload', payload)
         axios.post('/api/user/signup', payload)
             .then(response => {
+                console.log('this is the response that shows acc exists', response.data.results)
                 if(response.data.results === null) {
                     alert('USER NAME IS ALREADY TAKEN')
                 }
                 else {
                     console.log('this is the login sign up response', response);
+                    console.log('this is the response.data.results', response.data.results);
                 }
             })
             .catch(err => {

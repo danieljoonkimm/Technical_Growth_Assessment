@@ -19,7 +19,8 @@ class Workspace extends Component {
             status : 1,
             username : '',
             password : '',
-            goodTeam : false
+            goodTeam : false,
+            // firstStart: ''
         }
     }
 
